@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      UPeUQR App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-input type="text" placeholder="Escriba para crear CodigoQR" [(ngModel)]="qrData">
+    </ion-input>
+  </ion-item>
+  <button ion-button full icon-left (click)="createCode()" color="danger"><ion-icon name="barcode"></ion-icon>Crear Codido</button>
+  <button ion-button full icon-left (click)="scanCode()" color="dark"><ion-icon name="qr-scanner"></ion-icon>Scanear Codigo</button>
+
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+    <ion-card-content>
+      <p>Valor Codigo: {{ createdCode }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Resultado del escaneo: {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
